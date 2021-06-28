@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>FIC</title>
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+    <!--link rel="stylesheet" href="{% static "https://fonts.googleapis.com/css?family=Sofia" %}"-->
+    <!--Script src="header.js"></script -->
+</head>
+  <body>
+      <div class="header" id="h">
+            <img src="{% static "images/anna.png" %}" width="100px" style="float:left">
+            <a><h1>Faculty Information and Contrubtion System</h1>
+            <h2>Department of Information Science and Technology</h2>
+            <h2>Anna University, Chennai-600025</a>
+      </div>
+
+      <div class="topnav" id="topnav">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'about' %}">About Us</a>
+        <a href="https://annauniv.edu/">Au Home</a>
+        <a href="https://www.annauniv.edu/DIST/contact.html" style="float:right">Help</a>
+      </div>
+      <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img src="{% static "images/dep.jpg" %}" style="width:100%" height="450px">
+          <div class="text">Caption Two</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img src="{% static "images/niral.jpg" %}" style="width:100%" height="450px">
+          <div class="text">Caption Two</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img src="{% static "images/niral2.jpg" %}" style="width:100%" height="450px">
+          <div class="text">Caption Three</div>
+        </div>
+
+      </div>
+<br>
+
+  <div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+      <div class="row">
+
+          <div class="column" id="v">
+              <h2><strong>Choose Faculty</strong></h2>
+
+              <div class="custom-select" style="width:400px; height:400px">
+        <form action={% url 'show' %} method="post">
+          {% csrf_token %}
+          <select name="faculty" >
+            <option disabled="true" selected>Select Faculty:</option>
+            <optgroup label="HOD"></optgroup>
+              <option value="F1">DR.Saswati Mukherjee</option>
+            </optgroup>
+            <optgroup label="PROFESSORS"></optgroup>
+              <option value="F3">DR.Ranjani Parthasarthi</option>
+              <option value="F5">DR.G.V.Uma</option>
+              <option value="F8">DR.K.Vani</option>
+              <option value="F9">DR.S.Swamynathan</option>
+              <option value="F10">DR.P.Yogesh</option>
+              <option value="F11">DR.R.Geetha Ramani</option>
+              <option value="8">DR.J.Indumathi</option>
+              <option value="9">DR.S.Sridhar</option>
+            </optgroup>
+            <optgroup label="ASSOCIATE PROFESSORS"></optgroup>
+              <option value="10">DR.T.Mala</option>
+              <option value="11">DR.S.Sendhil Kumar</option>
+              <option value="12">DR.K.Kulothungan</option>
+              <option value="13">DR.M.Vijayalakshmi</option>
+            </optgroup>
+            <optgroup label="ASSISTANT PROFESSORS"></optgroup>
+              <option value="14">DR.N.Thangaraj</option>
+              <option value="15">DR.K.Indra Gandhi</option>
+              <option value="16">DR.E.Uma</option>
+              <option value="17">DR.Abirami Murugappan</option>
+              <option value="18">DR.P.Geetha</option>
+              <option value="19">DR.K.Vidya</option>
+              <option value="20">DR.Selvi Ravindran</option>
+              <option value="21">DR.S.Bama</option>
+              <option value="22">DR.K.Arul Deepa</option>
+            </optgroup>
+            <optgroup label="TEACHING FELLOWS"></optgroup>
+              <option value="23">DR.M.Deivamani</option>
+              <option value="24">DR.L.Sairamesh</option>
+              <option value="25">DR.V.Pandiyaraju</option>
+              <option value="26">MR.T.J.Vijay Kumar</option>
+              <option value="27">DR.D.Narashiman</option>
+              <option value="28">MS.Tina Esther</option>
+              <option value="29">MS.V.Ezhil Arasi</option>
+              <option value="30">MS.S.Kanimozhi</option>
+              <option value="31">DR.B.Senthilnayaki</option>
+              <option value="32">MS.G.Mahalakshmi</option>
+              <option value="33">MS.R.L.Jasmine</option>
+              <option value="34">DR.H.Riasudheen</option>
+              <option value="35">MS.T.Sindhu</option>
+              <option value="36">MS.Mohana Bhindu</option>
+              <option value="37">DR.K.A.Vidhya</option>
+              <option value="38">MS.B.Siva Shankari</option>
+              <option value="39">MR.J.Duraimurugan</option>
+              <option value="40">MS.N.Anbarasi</option>
+              <option value="41">MS.C.M.Sowmya</option>
+              <option value="31">MS.P.S.Apirajitha</option>
+            </optgroup>
+        </select>
+    </div>
+  </div>
+    <div class="column">
+      <h2>paper</h2>
+      <input type="checkbox" id="Rs" name="" value="">
+      <label for="paper">Reseaech Paper Publications</label><br>
+      <input type="checkbox" id="con" name="" value="">
+      <label for="paper">Journals</label><br>
+      <input type="checkbox" id="ref" name="" value="">
+      <label for="paper">Conferences</label><br>
+    </div>
+    <div class="column">
+      <h2>year</h2>
+      <input type="checkbox" id="eig" name="" value="">
+      <label for="year">2017-2018</label><br>
+      <input type="checkbox" id="nin" name="" value="">
+      <label for="year">2018-2019</label><br>
+      <input type="checkbox" id="ten" name="" value="">
+      <label for="year">2019-2020</label><br>
+
+    </div>
+    <input type="submit" value="Search Now">
+</form>
+
+  </div>
+
+  <div class ="footer" id="f">
+    <h2>Footer</h2>
+
+  </div>
+  <script>
+
+  window.onscroll = function() {myFunction()};
+
+// Get the navbar
+  var topnav  = document.getElementById("topnav");
+
+// Get the offset position of the navbar
+  var sticky = topnav.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+
+
+
+  var slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+  }
+
+
+  </script>
+
+  </body>
+  <footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</footer>
+</html>

@@ -1,0 +1,95 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+    <link rel="stylesheet" href="{% static "css/about.css" %}">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <script>
+    function generatePDF(){
+      const element = document.getElementById("invoice");
+
+      html2pdf()
+      .from(element)
+      .save();
+    }
+    </script>
+    <style media="screen">
+      .container{
+        font-size: 20px;
+      }
+
+      .header{
+        font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+        background: linear-gradient(90deg, rgba(21,117,164,1) 0%, rgba(36,109,214,1) 100%);
+      }
+      .footer {
+       position: fixed;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       height: 50px;
+       background: linear-gradient(90deg, rgba(21,117,164,1) 0%, rgba(36,109,214,1) 100%);
+       color: white;
+       text-align: center;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="header" id="h">
+          <img src="{% static "images/anna.png" %}" width="100px" style="float:left">
+          <a><h1 style="color:black;">Faculty Information and Contrubtion System <br>
+          Department of Information Science and Technology<br>
+          Anna University, Chennai-600025</h1></a>
+    </div>
+    <div class="topnav" id="topnav">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'about' %}">About Us</a>
+      <a href="https://annauniv.edu/">Au Home</a>
+      <a href="https://www.annauniv.edu/DIST/contact.html" style="float:right">Help</a>
+    </div>
+    <div class="w-25 p-3" width 25% id="invoice">
+      <table class="table table-bordered border-primary">
+
+        <tr>
+		        <td><b>Authors</b></td>
+            <td><b>Title</b></td>
+            <td><b>Year</b></td>
+            <td><b>Publisher</b></td>
+        </tr>
+      {% for i in data %}
+      {% if forloop.first %}
+      <fieldset>
+          <legend><b><center>BOOK PUBLISHED</center></b></legend>
+          <label for="fname">Faculty Name:</label>{{i.F_Name}}<br>
+      </fieldset><br>
+       {% endif %}
+
+                <tr>
+                    <td>{{i.Authors}}</td>
+                    <td>{{i.Title}}</td>
+                    <td>{{i.Year}}</td>
+                    <td>{{i.Publisher}}</td>
+                </tr>
+
+      {% endfor %}
+
+
+  </table>
+</div>
+<button class="btn btn-info" onclick="generatePDF()">Download</button>
+
+<footer class="footer">
+  <p>Copyright © 2018 DIST
+Developed & Maintained by MCA</p>
+</footer>
+
+
+  </body>
+</html>

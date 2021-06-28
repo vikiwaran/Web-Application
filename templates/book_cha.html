@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>FIC</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static "css/index.css" %}">
+  <link rel="stylesheet" href="{% static "css/about.css" %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style media="screen">
+  /* Remove the navbar's default margin-bottom and rounded borders */
+  .navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+  .header{
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+    background: linear-gradient(90deg, rgba(21,117,164,1) 0%, rgba(36,109,214,1) 100%);
+  }
+
+  /* Add a gray background color and some padding to the footer */
+  .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 50px;
+   background: linear-gradient(90deg, rgba(21,117,164,1) 0%, rgba(36,109,214,1) 100%);
+   color: white;
+   text-align: center;
+}
+
+.carousel-inner img {
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+    height:100px;
+}
+  .sidenav {
+    height: 80%;
+    width: 160px;
+    position: absolute;
+    z-index: 1;
+    top: 100;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+  }
+
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+
+  @media (max-width: 100px) {
+    .carousel-caption {
+      display: none;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="header" id="h">
+    <img src="{% static "images/anna.png" %}" width="100px" style="float:left">
+    <a><h1 style="color:black;">Faculty Information and Contrubtion System <br>
+    Department of Information Science and Technology<br>
+    Anna University, Chennai-600025</h1></a>
+  </div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="https://annauniv.edu/">Au Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://www.annauniv.edu/DIST/contact.html">Help</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="sidenav">
+  <a href="{% url 'dashboard' %}">Dashboard</a>
+  <a href="{% url 'faculty_info' %}">Faculty_Information</a>
+  <a href="{% url 'results' %}">Research_Paper</a>
+  <a href="{% url 'book_pub' %}">Book_Published</a>
+  <a href="{% url 'book_cha' %}">Book_Chapter</a>
+</div>
+<div class="main">
+<div class="container text-center">
+ <h3 style="font-family: New Century Schoolbook, TeX Gyre Schola, serif;"> <b>BOOK CHAPTER</b> </h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <form action={% url 'chapter' %} method="post">
+        {% csrf_token %}
+        <select name="faculty" >
+          <option disabled="true" selected>Select Faculty:</option>
+          <optgroup label="HOD"></optgroup>
+            <option value="F1">DR.Saswati Mukherjee</option>
+          </optgroup>
+          <optgroup label="PROFESSORS"></optgroup>
+            <option value="F3">DR.Ranjani Parthasarthi</option>
+            <option value="F5">DR.G.V.Uma</option>
+            <option value="F8">DR.K.Vani</option>
+            <option value="F9">DR.S.Swamynathan</option>
+            <option value="F10">DR.P.Yogesh</option>
+            <option value="F11">DR.R.Geetha Ramani</option>
+            <option value="F6">DR.J.Indumathi</option>
+            <option value="F7">DR.S.Sridhar</option>
+          </optgroup>
+          <optgroup label="ASSOCIATE PROFESSORS"></optgroup>
+            <option value="F16">DR.T.Mala</option>
+            <option value="F18">DR.S.Sendhil Kumar</option>
+            <option value="F19">DR.K.Kulothungan</option>
+            <option value="F17">DR.M.Vijayalakshmi</option>
+          </optgroup>
+          <optgroup label="ASSISTANT PROFESSORS"></optgroup>
+            <option value="F25">DR.N.Thangaraj</option>
+            <option value="F24">DR.K.Indra Gandhi</option>
+            <option value="F27">DR.E.Uma</option>
+            <option value="F26">DR.Abirami Murugappan</option>
+            <option value="F28">DR.P.Geetha</option>
+            <option value="F29">DR.K.Vidya</option>
+            <option value="F30">DR.Selvi Ravindran</option>
+            <option value="F23">DR.S.Bama</option>
+            <option value="22">DR.K.Arul Deepa</option>
+          </optgroup>
+          <optgroup label="TEACHING FELLOWS"></optgroup>
+            <option value="F38">DR.M.Deivamani</option>
+            <option value="F40">DR.L.Sairamesh</option>
+            <option value="F41">DR.V.Pandiyaraju</option>
+            <option value="F42">MR.T.J.Vijay Kumar</option>
+            <option value="F43">DR.D.Narashiman</option>
+            <option value="F45">MS.Tina Esther</option>
+            <option value="F53">MS.V.Ezhil Arasi</option>
+            <option value="F54">MS.S.Kanimozhi</option>
+            <option value="F47">DR.B.Senthilnayaki</option>
+            <option value="F49">MS.G.Mahalakshmi</option>
+            <option value="F50">MS.R.L.Jasmine</option>
+            <option value="F56">DR.H.Riasudheen</option>
+            <option value="F51">MS.T.Sindhu</option>
+            <option value="F57">MS.Mohana Bhindu</option>
+            <option value="F52">DR.K.A.Vidhya</option>
+            <option value="38">MS.B.Siva Shankari</option>
+            <option value="39">MR.J.Duraimurugan</option>
+            <option value="40">MS.N.Anbarasi</option>
+            <option value="41">MS.C.M.Sowmya</option>
+            <option value="31">MS.P.S.Apirajitha</option>
+          </optgroup>
+      </select>
+
+      <br>
+      <div class="well">
+        <h2>year</h2>
+        <input type="checkbox" id="seven" name="checks []" value="2017">
+        <label for="year">2017</label><br>
+        <input type="checkbox" id="eight" name="checks []" value="2018">
+        <label for="year">2018</label><br>
+        <input type="checkbox" id="nine" name="checks []" value="2019">
+        <label for="year">2019</label><br>
+        <input type="checkbox" id="zero" name="checks []" value="2020">
+        <label for="year">2020</label><br>
+      </div>
+      <br>
+      <input type="submit" class="btn btn-info" value="Search Now">
+    </form>
+
+  </div>
+</div>
+</div>
+</div>
+<footer class="footer">
+  <p>Copyright © 2021 DIST
+Developed & Maintained by MCA</p>
+</footer>
+</body>
+</html>
